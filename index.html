@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fizin3d Nesting Manager — V2.0 alpha 4</title>
+<title>Doug_war Nesting Manager — V2.0 alpha 4</title>
 <style>
 :root{--pink:#fd0156;--purple:#9a4acf;--ink:#20212a;--muted:#6b7280;--line:#e5e7eb;--bg:#f6f7fb}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,system-ui,Arial,sans-serif}
@@ -48,7 +48,7 @@ footer{max-width:1180px;margin:0 auto 24px;padding:0 16px;color:var(--muted);fon
 </style>
 </head>
 <body>
-<header><div><strong>Fizin3d Nesting Manager</strong><br><span>Organizador de cópias para Bambu Lab A1</span></div><div class="pill">V2.0 alpha 4 · local no navegador</div></header>
+<header><div><strong>Doug_war Nesting Manager</strong><br><span>Organizador de cópias para Bambu Lab A1</span></div><div class="pill">V2.0 alpha 4 · local no navegador</div></header>
 <main>
 <section class="panel">
 <h2>1. Peças e parâmetros</h2>
@@ -473,7 +473,7 @@ async function build3mfFresh(tv,pieces,title){
  for(let i=0;i<tri.length;i+=3)T.push(`<triangle v1="${tri[i]}" v2="${tri[i+1]}" v3="${tri[i+2]}"/>`);
  const id={L:[[1,0,0],[0,1,0],[0,0,1]],d:[0,0,0]},items=pieces.map(p=>`<item objectid="1" transform="${itemTransform({L:id.L,d:id.d},p,{cx:0,cy:0,minZ:0},1)}" printable="1"/>`).join('\n');
  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
- const model=`<?xml version="1.0" encoding="UTF-8"?>\n<model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">\n<metadata name="Title">${esc(title||'Nesting')}</metadata>\n<metadata name="Application">Fizin3d Nesting Manager</metadata>\n<resources>\n<object id="1" name="${esc(title||'peca')}" type="model">\n<mesh>\n<vertices>\n${V.join('\n')}\n</vertices>\n<triangles>\n${T.join('\n')}\n</triangles>\n</mesh>\n</object>\n</resources>\n<build>\n${items}\n</build>\n</model>\n`;
+ const model=`<?xml version="1.0" encoding="UTF-8"?>\n<model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">\n<metadata name="Title">${esc(title||'Nesting')}</metadata>\n<metadata name="Application">Doug_war Nesting Manager</metadata>\n<resources>\n<object id="1" name="${esc(title||'peca')}" type="model">\n<mesh>\n<vertices>\n${V.join('\n')}\n</vertices>\n<triangles>\n${T.join('\n')}\n</triangles>\n</mesh>\n</object>\n</resources>\n<build>\n${items}\n</build>\n</model>\n`;
  const ct='<?xml version="1.0" encoding="UTF-8"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="model" ContentType="application/vnd.ms-package.3dmanufacturing-3dmodel+xml"/></Types>';
  const rl='<?xml version="1.0" encoding="UTF-8"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Target="/3D/3dmodel.model" Id="rel0" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"/></Relationships>';
  return zipBlob([await textEntry('[Content_Types].xml',ct,false),await textEntry('_rels/.rels',rl,false),await textEntry('3D/3dmodel.model',model,true)]);
@@ -1281,7 +1281,7 @@ async function build3mfParts(parts,pieces,title){
  }
  const I={L:[[1,0,0],[0,1,0],[0,0,1]],d:[0,0,0]},z0={cx:0,cy:0,minZ:0};
  const items=pieces.map(p=>`<item objectid="${objId(p.part)}" transform="${itemTransform(I,p,z0,1)}" printable="1"/>`).join('\n');
- const model=`<?xml version="1.0" encoding="UTF-8"?>\n<model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">\n<metadata name="Title">${esc(title||'Nesting')}</metadata>\n<metadata name="Application">Fizin3d Nesting Manager</metadata>\n<resources>\n${res}</resources>\n<build>\n${items}\n</build>\n</model>\n`;
+ const model=`<?xml version="1.0" encoding="UTF-8"?>\n<model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">\n<metadata name="Title">${esc(title||'Nesting')}</metadata>\n<metadata name="Application">Doug_war Nesting Manager</metadata>\n<resources>\n${res}</resources>\n<build>\n${items}\n</build>\n</model>\n`;
  const ct='<?xml version="1.0" encoding="UTF-8"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="model" ContentType="application/vnd.ms-package.3dmanufacturing-3dmodel+xml"/></Types>';
  const rl='<?xml version="1.0" encoding="UTF-8"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Target="/3D/3dmodel.model" Id="rel0" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"/></Relationships>';
  return zipBlob([await textEntry('[Content_Types].xml',ct,false),await textEntry('_rels/.rels',rl,false),await textEntry('3D/3dmodel.model',model,true)]);
@@ -1484,7 +1484,7 @@ $('exportAll').addEventListener('click',async()=>{
 });
 $('exportJson').addEventListener('click',()=>{
  const {W,D,M,G}=plate();
- const data={app:'Fizin3d Nesting Manager',version:'2.0-alpha4',plate:{width:W,depth:D,margin:M,gap:G},
+ const data={app:'Doug_war Nesting Manager',version:'2.0-alpha4',plate:{width:W,depth:D,margin:M,gap:G},
   parts:parts.map((p,i)=>({index:i,name:p.name,dimensions_mm:p.dims,quantity:p.filler?'max':p.qty,placed:pieces.filter(x=>x.part===i).length})),plate_number:cur+1,plates_total:Math.max(1,plates.length),
   placements:pieces.map((p,i)=>({copy:i+1,part:parts[p.part].name,translate_x_mm:p.tx,translate_y_mm:p.ty,rotation_z_deg:p.deg}))};
  download(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),baseName()+'_nesting.json');
@@ -1493,7 +1493,7 @@ $('exportStl').addEventListener('click',()=>{
  let count=0;for(const p of pieces)count+=parts[p.part].nt;
  if(84+count*50>2e9){say('Modelo pesado demais para exportar tudo em um STL. Reduza a quantidade de cópias.');return;}
  const buf=new ArrayBuffer(84+count*50),dv=new DataView(buf);
- const header=new TextEncoder().encode('Fizin3d Nesting Manager v2.0 alpha - combined copies');new Uint8Array(buf,0,Math.min(80,header.length)).set(header.slice(0,80));dv.setUint32(80,count,true);
+ const header=new TextEncoder().encode('Doug_war Nesting Manager v2.0 alpha - combined copies');new Uint8Array(buf,0,Math.min(80,header.length)).set(header.slice(0,80));dv.setUint32(80,count,true);
  let off=84;
  for(const p of pieces){
   const verts=parts[p.part].tv,nTri=parts[p.part].nt,c=Math.cos(p.a),s=Math.sin(p.a);
